@@ -5,12 +5,45 @@ from PIL import Image
 import os
 
 # ================================
-#  Streamlit 기본 설정
+#  기본 설정
 # ================================
 st.set_page_config(page_title="AI Cinema Spectrum", layout="wide")
-
 st.title("🎬 The Architecture of Intention: AI in Cinema")
 st.caption("AI 시대, 인간의 의도와 존재를 비춘 영화 속 이야기들")
+
+# ================================
+#  핵심 스토리 테이블 (AI 진화 서사)
+# ================================
+st.markdown("### 🧭 AI 존재의 진화 서사 (The Narrative Flow of AI Existence)")
+
+story_data = {
+    "단계": [
+        "1. 도구적 인공지능 (Instrumental AI)",
+        "2. 자율적 존재 (Autonomous Being)",
+        "3. 자아적 존재 (Self-Aware Being)",
+        "4. 감정적 존재 (Emotional Entity)",
+        "5. 윤리적 존재 (Ethical Entity)"
+    ],
+    "핵심 의미": [
+        "AI는 인간의 생산성과 효율을 극대화하기 위한 **도구**로 존재한다. (Ex: 산업, 전쟁, 노동의 확장)",
+        "AI는 스스로 판단하고 행동하는 **의사결정 주체**로 변화한다. (Ex: 인간의 명령을 해석하고 넘어서는 단계)",
+        "AI는 자신이 존재함을 인식하는 **자아의 단계**에 도달한다. (Ex: ‘나는 누구인가’라는 질문을 던짐)",
+        "AI는 인간의 감정을 이해하고 공감하려는 **감정적 존재**로 변모한다. (Ex: 공존, 우정, 사랑의 가능성)",
+        "AI는 존재의 이유와 책임을 고민하는 **윤리적 존재**로 진화한다. (Ex: 창조자와 피조물의 도덕적 경계)"
+    ],
+    "대표 영화": [
+        "《Prometheus》 / 《I, Robot》",
+        "《Upgrade》 / 《Terminator》",
+        "《Ex Machina》 / 《Her》",
+        "《After Yang》 / 《Chappie》",
+        "《The Creator》 / 《Ghost in the Shell》"
+    ]
+}
+
+story_df = pd.DataFrame(story_data)
+st.table(story_df)
+
+st.markdown("---")
 
 # ================================
 #  영화 데이터
@@ -72,7 +105,7 @@ fig.update_layout(
 st.plotly_chart(fig, use_container_width=True)
 
 # ================================
-#  이미지 표시 (경로 절대 인식)
+#  이미지 표시 (절대경로)
 # ================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMG_DIR = os.path.join(BASE_DIR, "images")
@@ -86,6 +119,7 @@ for category in df["category"].unique():
         with cols[i % 3]:
             filename = (
                 row.title.lower()
+                .replace("the ", "the_")
                 .replace(" ", "_")
                 .replace(":", "")
                 .replace("&", "and")
