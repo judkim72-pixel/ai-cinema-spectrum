@@ -2,15 +2,25 @@
 
 
 
-An interactive Streamlit app visualizing how AI philosophy evolves through cinema.
-
-Shows 5 philosophical themes — Intention, Control, Perception, Emotion, and Ethics — 
-
-with representative films, Wikipedia posters, and iconic quotes.
+An interactive Streamlit app visualizing the evolution of AI philosophy through cinema.
 
 
 
-👉 Run this app on Streamlit Cloud: \[https://share.streamlit.io/](https://share.streamlit.io/)
+\### Features
+
+\- 5 philosophical themes of AI: Intention, Control, Perception, Emotion, and Ethics  
+
+\- Each theme includes representative films, iconic quotes, and Wikipedia-linked posters  
+
+\- Interactive Plotly timeline showing narrative years vs AI themes
+
+
+
+\### Run locally
+
+```bash
+
+streamlit run ai\_cinema\_spectrum\_v2.py
 
 
 
